@@ -1,0 +1,67 @@
+[
+  {
+    "chainId": 11155111,
+    "address": "0x6b5C3fC0EdB93115dCA94221E6826dAaC296AA9c",
+    "name": "Dai Stablecoin",
+    "symbol": "DAI",
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/logos/token-logos/token/dai.jpg"
+  },
+  {
+    "chainId": 11155111,
+    "address": "0xcD47821BF5096914858e94EDFd4218B6f5Ab3635",
+    "name": "Tether USD",
+    "symbol": "USDT",
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/logos/token-logos/token/usdt.jpg"
+  },
+  {
+    "chainId": 11155111,
+    "address": "0x65B02bE3Fa8B6009E513C85887aB4923Ba2A998d",
+    "name": "USDC",
+    "symbol": "USDC",
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/logos/token-logos/token/usdt.jpg"
+  },
+  {
+    "chainId": 11155111,
+    "address": "0xFeCae8c984D55792032F5cC62C33B6253770F10a",
+    "name": "Basic Attention Token",
+    "symbol": "BAT",
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/logos/token-logos/token/bat.jpg"
+  },
+  {
+    "chainId": 11155111,
+    "address": "0xa8773c21db637d4cf87e7E6A05093D0052064957",
+    "name": "Wrapped BTC",
+    "symbol": "WBTC",
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/logos/token-logos/token/wbtc.jpg"
+  },
+  {
+    "chainId": 11155111,
+    "address": "0x151e597537d84a1D4E1E8e5f1409846CC15C2446",
+    "name": "TBTC",
+    "symbol": "TBTC",
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/logos/token-logos/token/wbtc.jpg"
+  },
+  {
+    "chainId": 11155111,
+    "address": "0xA3606FAC5C7F631c73B4A1785ba27B8B9783E281",
+    "name": "ChainLink Token",
+    "symbol": "LINK",
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/logos/token-logos/token/link.jpg"
+  },
+
+  {
+    "chainId": 11155111,
+    "address": "0x4200000000000000000000000000000000000006",
+    "name": "Wrapped Ether",
+    "symbol": "WETH",
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/logos/token-logos/token/weth.jpg"
+  }
+]

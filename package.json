@@ -1,0 +1,25 @@
+{
+  "name": "koanprotocoltokenlist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "build": "rimraf build && mkdir -p build && node src/internal/write.js > build/koanproocol.tokenlist.json",
+    "prepublishOnly": "pnpm run build && pnpm test",
+    "ci:version": "pnpm version minor",
+    "ci:publish": "pnpm publish --access public --tag latest"
+  },
+  "keywords": [],
+  "author": "Ibrahim Ijai <whizibrahim@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://koanprotocol.xyz",
+  "devDependencies": {
+    "@uniswap/token-lists": "1.0.0-beta.33",
+    "chai": "^4.2.0",
+    "@ethersproject/address": "^5.0.2",
+    "ajv": "^6.12.3",
+    "mocha": "^8.0.1",
+    "rimraf": "^3.0.2"
+  }
+}
