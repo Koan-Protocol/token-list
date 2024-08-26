@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "build": "rimraf build && mkdir -p build && node src/internal/write.js > build/koanproocol.tokenlist.json",
+    "build": "rimraf build && mkdir -p build && node src/internal/write.js > build/koanproocol.tokenlist.json && node src/internal/write.js > apis/src/data/koanproocol.tokenlist.json",
     "prepublishOnly": "pnpm run build && pnpm test",
     "ci:version": "pnpm version minor",
     "ci:publish": "pnpm publish --access public --tag latest"
@@ -15,11 +15,14 @@
   "license": "GPL-3.0-or-later",
   "homepage": "https://koanprotocol.xyz",
   "devDependencies": {
-    "@uniswap/token-lists": "1.0.0-beta.33",
-    "chai": "^4.2.0",
     "@ethersproject/address": "^5.0.2",
+    "@uniswap/token-lists": "1.0.0-beta.33",
     "ajv": "^6.12.3",
+    "chai": "^4.2.0",
     "mocha": "^8.0.1",
     "rimraf": "^3.0.2"
+  },
+  "dependencies": {
+    "axios": "^1.7.5"
   }
 }
