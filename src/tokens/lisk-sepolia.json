@@ -1,0 +1,42 @@
+[
+	{
+		"chainId": 4202,
+		"address": "0x26F653f8b51FA2F6c39eD6adf1A9401B8DBA8819",
+		"name": "Dai Stablecoin ",
+		"symbol": "DAI",
+		"decimals": 18,
+		"logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/lists/tokenLists/logos/token/base/0x0000206329b97DB379d5E1Bf586BbDB969C63274.png"
+	},
+	{
+		"chainId": 4202,
+		"address": "0x27eaAf3FD3b508f0E0261F274B2574f15B92c38e",
+		"name": "USD Coin ",
+		"symbol": "USDC",
+		"decimals": 6,
+		"logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/lists/tokenLists/logos/token/base/0x0000206329b97DB379d5E1Bf586BbDB969C63274.png"
+	},
+	{
+		"chainId": 4202,
+		"address": "0x0a281E2193FFfb4EFD50B198DA25494A2644f43E",
+		"name": "KOAN Token",
+		"symbol": "KOAN",
+		"decimals": 18,
+		"logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/lists/tokenLists/logos/token/base/0x0000206329b97DB379d5E1Bf586BbDB969C63274.png"
+	},
+	{
+		"chainId": 4202,
+		"address": "0x4200000000000000000000000000000000000006",
+		"name": "Wrapped Ether",
+		"symbol": "WETH",
+		"decimals": 18,
+		"logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/logos/token-logos/token/weth.jpg"
+	},
+	{
+		"chainId": 4202,
+		"address": "0x7f31d5064C7914e417091A39eceBb81bAc582536",
+		"name": "Wrapped BTC",
+		"symbol": "WBTC",
+		"decimals": 18,
+		"logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/lists/tokenLists/logos/token/base/0x00e1724885473B63bCE08a9f0a52F35b0979e35A.png"
+	}
+]
