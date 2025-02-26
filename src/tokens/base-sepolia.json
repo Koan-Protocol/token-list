@@ -5,7 +5,7 @@
 		"name": "Dai Stablecoin ",
 		"symbol": "DAI",
 		"decimals": 18,
-		"logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/lists/tokenLists/logos/token/base/0x0000206329b97DB379d5E1Bf586BbDB969C63274.png"
+		"logoURI": "https://raw.githubusercontent.com/Koan-Protocol/token-list/main/src/logos/base-sepolia/0x27eaAf3FD3b508f0E0261F274B2574f15B92c38e.png"
 	},
 	{
 		"chainId": 84532,
@@ -13,7 +13,7 @@
 		"name": "USD Coin ",
 		"symbol": "USDC",
 		"decimals": 6,
-		"logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/lists/tokenLists/logos/token/base/0x0000206329b97DB379d5E1Bf586BbDB969C63274.png"
+		"logoURI": "https://raw.githubusercontent.com/Koan-Protocol/token-list/main/src/logos/base-sepolia/0x036CbD53842c5426634e7929541eC2318f3dCF7e.png"
 	},
 	{
 		"chainId": 84532,
@@ -21,7 +21,7 @@
 		"name": "KOAN Token",
 		"symbol": "KOAN",
 		"decimals": 18,
-		"logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/lists/tokenLists/logos/token/base/0x0000206329b97DB379d5E1Bf586BbDB969C63274.png"
+		"logoURI": "https://raw.githubusercontent.com/Koan-Protocol/token-list/main/src/logos/base-sepolia/0x7f31d5064C7914e417091A39eceBb81bAc582536.png"
 	},
 	{
 		"chainId": 84532,
@@ -29,7 +29,7 @@
 		"name": "Wrapped Ether",
 		"symbol": "WETH",
 		"decimals": 18,
-		"logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/logos/token-logos/token/weth.jpg"
+		"logoURI": "https://raw.githubusercontent.com/Koan-Protocol/token-list/main/src/logos/base-sepolia/0x4200000000000000000000000000000000000006.png"
 	},
 	{
 		"chainId": 84532,
@@ -37,6 +37,6 @@
 		"name": "Wrapped BTC",
 		"symbol": "WBTC",
 		"decimals": 18,
-		"logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/lists/tokenLists/logos/token/base/0x00e1724885473B63bCE08a9f0a52F35b0979e35A.png"
+		"logoURI": "https://raw.githubusercontent.com/Koan-Protocol/token-list/main/src/logos/base-sepolia/0x26F653f8b51FA2F6c39eD6adf1A9401B8DBA8819.png"
 	}
 ]
