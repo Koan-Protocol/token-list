@@ -31,7 +31,6 @@
 		"decimals": 18,
 		"logoURI": "https://raw.githubusercontent.com/Koan-Protocol/koan-assets/main/logos/token-logos/token/weth.jpg"
 	},
-
 	{
 		"chainId": 84532,
 		"address": "0x26F653f8b51FA2F6c39eD6adf1A9401B8DBA8819",
