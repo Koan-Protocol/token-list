@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
-import { getTokenInfo } from "./lib/wagmi-functions";
+import { getBalance, getBalances, getTokenInfo } from "./lib/wagmi-functions";
 import {
 	getKoanDefaultTokens,
 	getToken,
@@ -77,6 +77,42 @@ app.get("/tokens/:chainId/:address", async (c) => {
 		success: true,
 		token,
 	});
+});
+
+app.get("/balances/:chainId/:address", async (c) => {
+	const chainId = parseInt(c.req.param("chainId"));
+	const address = c.req.param("address");
+
+	console.log("address", address);
+
+	const balances = await getBalances({
+		userAddress: address as Address,
+		chainId: chainId as ChainId,
+	});
+
+	console.log("balances", balances);
+
+	// Convert BigInt values to strings to make them JSON-serializable
+	const serializableBalances = balances.map((balance) => ({
+		result: balance.result?.toString() || "0",
+		status: balance.status,
+	}));
+
+	return c.json({ balances: serializableBalances });
+});
+
+app.get("/balances/:chainId/:address/:tokenAddress", async (c) => {
+	const chainId = parseInt(c.req.param("chainId"));
+	const address = c.req.param("address");
+	const tokenAddress = c.req.param("tokenAddress");
+
+	const balance = await getBalance({
+		address: address as Address,
+		chainId: chainId as ChainId,
+		tokenAddress: tokenAddress as Address,
+	});
+
+	return c.json({ balance: balance.toString() });
 });
 
 export default app;
