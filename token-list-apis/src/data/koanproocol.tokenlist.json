@@ -1,6 +1,6 @@
 {
   "name": "Koan Protocol TokenList",
-  "timestamp": "2025-02-26T00:40:33.015Z",
+  "timestamp": "2025-07-01T16:37:47.587Z",
   "version": {
     "major": 1,
     "minor": 0,
@@ -52,6 +52,22 @@
       "symbol": "WETH",
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/Koan-Protocol/token-list/main/src/logos/lisk-sepolia/0x4200000000000000000000000000000000000006.png"
+    },
+    {
+      "address": "0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb",
+      "chainId": 8453,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/Koan-Protocol/token-list/main/src/logos/base/0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb.jpg",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI"
+    },
+    {
+      "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      "chainId": 8453,
+      "decimals": 6,
+      "logoURI": "https://raw.githubusercontent.com/Koan-Protocol/token-list/main/src/logos/base/0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913.jpg",
+      "name": "USD Coin",
+      "symbol": "USDC"
     },
     {
       "chainId": 84532,

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "build": "rimraf build && mkdir -p build && node src/internal/write.js > build/koanproocol.tokenlist.json && node src/internal/write.js > apis/src/data/koanproocol.tokenlist.json",
+    "build": "rimraf build && mkdir -p build && node src/internal/write.js > build/koanproocol.tokenlist.json && node src/internal/write.js > ../token-list-apis/src/data/koanproocol.tokenlist.json",
     "prepublishOnly": "pnpm run build && pnpm test",
     "ci:version": "pnpm version minor",
     "ci:publish": "pnpm publish --access public --tag latest"

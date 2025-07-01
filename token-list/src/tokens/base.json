@@ -1,0 +1,18 @@
+[
+  {
+    "address": "0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb",
+    "chainId": 8453,
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/Koan-Protocol/token-list/main/src/logos/base/0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb.jpg",
+    "name": "Dai Stablecoin",
+    "symbol": "DAI"
+  },
+  {
+    "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+    "chainId": 8453,
+    "decimals": 6,
+    "logoURI": "https://raw.githubusercontent.com/Koan-Protocol/token-list/main/src/logos/base/0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913.jpg",
+    "name": "USD Coin",
+    "symbol": "USDC"
+  }
+]
