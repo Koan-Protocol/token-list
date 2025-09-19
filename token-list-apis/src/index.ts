@@ -17,6 +17,7 @@ app.use(
 			"http://localhost:3000",
 			"http://localhost:5173",
 			"https://koanprotocol.xyz",
+			"https://www.koanprotocol.xyz",
 		],
 		allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 		allowHeaders: ["Content-Type", "Authorization"],
