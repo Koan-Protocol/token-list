@@ -6,6 +6,7 @@ import {
 	shouldRefreshCache,
 	CACHE_KEYS,
 } from "../lib/cache";
+import { createRedisClient } from "../lib/upstash-redis";
 import {
 	type TokenProvider,
 	lifiProvider,
@@ -26,32 +27,66 @@ const fetchFromAllProviders = async (env: Env): Promise<Token[]> => {
 	return results.flat();
 };
 
-const fetchAndCache = async (env: Env): Promise<Token[]> => {
+const fetchAndCacheUnvalidated = async (env: Env): Promise<Token[]> => {
 	const allTokens = await fetchFromAllProviders(env);
 	const deduplicated = deduplicateTokens(allTokens);
 
+	// Add position tracking for validation
+	const tokensWithPosition = deduplicated.map((token, index) => ({
+		...token,
+		pst: index,
+	}));
+
+	const redis = createRedisClient(env);
+
 	await Promise.all([
-		saveToCache(env, CACHE_KEYS.ALL_TOKENS, deduplicated),
+		redis.set(
+			CACHE_KEYS.UNVALIDATED_TOKENS,
+			JSON.stringify(tokensWithPosition),
+			{
+				ex: 7 * 24 * 60 * 60, // 1 week
+			},
+		),
 		saveToCache(env, CACHE_KEYS.LAST_SYNC, Date.now()),
 	]);
 
-	console.log(`Cached ${deduplicated.length} deduplicated tokens`);
+	console.log(
+		`Cached ${deduplicated.length} unvalidated tokens with position tracking`,
+	);
+
+	// Return without pst for API response
 	return deduplicated;
 };
 
 export const getTokens = async (env: Env): Promise<Token[]> => {
+	// 1. Try validated cache first (1 week TTL)
+	const validated = await getFromCache<Token[]>(
+		env,
+		CACHE_KEYS.VALIDATED_TOKENS,
+	);
+	if (validated?.length) {
+		console.log(`✅ Validated cache hit: ${validated.length} tokens`);
+		return validated;
+	}
+
+	// 2. Check if we need to refresh unvalidated cache
 	const needsRefresh = await shouldRefreshCache(env);
 
 	if (!needsRefresh) {
-		const cached = await getFromCache<Token[]>(env, CACHE_KEYS.ALL_TOKENS);
-		if (cached?.length) {
-			console.log(`Cache hit: ${cached.length} tokens`);
-			return cached;
+		const unvalidated = await getFromCache<Token[]>(
+			env,
+			CACHE_KEYS.UNVALIDATED_TOKENS,
+		);
+		if (unvalidated?.length) {
+			console.log(`📦 Unvalidated cache hit: ${unvalidated.length} tokens`);
+			// Remove pst before returning
+			return unvalidated.map(({ pst, ...token }: any) => token);
 		}
 	}
 
-	console.log("Cache miss or expired - fetching from providers...");
-	return fetchAndCache(env);
+	// 3. Fetch from providers and cache as unvalidated
+	console.log("🔄 Cache miss - fetching from providers...");
+	return fetchAndCacheUnvalidated(env);
 };
 
 export const getTokensByChainIds = async (

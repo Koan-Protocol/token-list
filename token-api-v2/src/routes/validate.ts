@@ -1,25 +1,30 @@
 import { Hono } from "hono";
-import { validateAllTokens } from "../services/token-validation-service";
 
 const validateRoute = new Hono<{ Bindings: Env }>();
 
 validateRoute.post("/", async (c) => {
-	console.log("Starting token validation...");
+	console.log("Starting token validation via Durable Object...");
 
 	try {
-		const result = await validateAllTokens(c.env);
+		// Get Durable Object stub
+		const id = c.env.TokenValidationSchedulers.idFromName("validator");
+		const stub = c.env.TokenValidationSchedulers.get(id);
+
+		// Start validation
+		const response = await stub.fetch(
+			new Request("http://do/start", {
+				method: "POST",
+			}),
+		);
+
+		const result = (await response.json()) as any;
 
 		return c.json({
-			success: true,
-			message: "Token validation complete",
-			result: {
-				total: result.total,
-				validated: result.validated,
-				failed: result.failed,
-				updated: result.updated,
-				duration: `${(result.duration / 1000).toFixed(2)}s`,
-				failedTokens: result.failedTokens,
-			},
+			success: response.ok,
+			message: result.ok
+				? "Validation started - processing in batches"
+				: result.error,
+			...(typeof result === "object" && result !== null ? result : {}),
 		});
 	} catch (error) {
 		console.error("Validation error:", error);
@@ -33,12 +38,62 @@ validateRoute.post("/", async (c) => {
 	}
 });
 
+validateRoute.get("/status", async (c) => {
+	try {
+		const id = c.env.TokenValidationSchedulers.idFromName("validator");
+		const stub = c.env.TokenValidationSchedulers.get(id);
+
+		const response = await stub.fetch(new Request("http://do/status"));
+		const result = (await response.json()) as any;
+
+		return c.json(result);
+	} catch (error) {
+		console.error("Status error:", error);
+		return c.json(
+			{
+				success: false,
+				error: error instanceof Error ? error.message : "Unknown error",
+			},
+			500,
+		);
+	}
+});
+
+validateRoute.post("/reset", async (c) => {
+	try {
+		const id = c.env.TokenValidationSchedulers.idFromName("validator");
+		const stub = c.env.TokenValidationSchedulers.get(id);
+
+		const response = await stub.fetch(
+			new Request("http://do/reset", {
+				method: "POST",
+			}),
+		);
+		const result = (await response.json()) as any;
+
+		return c.json(result);
+	} catch (error) {
+		console.error("Reset error:", error);
+		return c.json(
+			{
+				success: false,
+				error: error instanceof Error ? error.message : "Unknown error",
+			},
+			500,
+		);
+	}
+});
+
 validateRoute.get("/", async (c) => {
 	return c.json({
 		message: "Token validation endpoint",
-		usage: "POST /validate to start validation",
+		endpoints: {
+			start: "POST /validate - Start batch validation",
+			status: "GET /validate/status - Check validation progress",
+			reset: "POST /validate/reset - Reset validation state",
+		},
 		description:
-			"Validates all tokens against blockchain, updates name/symbol/decimals from on-chain data",
+			"Validates tokens in batches of 20 every minute using Durable Objects and Alarms",
 	});
 });
 

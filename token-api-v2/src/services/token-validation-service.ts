@@ -15,13 +15,15 @@ export interface ValidationResult {
 	duration: number;
 }
 
-interface ValidatedToken extends Token {
+export interface ValidatedToken extends Token {
 	validated: boolean;
 	onChainName?: string;
 	onChainSymbol?: string;
 }
 
-const validateSingleToken = async (token: Token): Promise<ValidatedToken> => {
+export const validateSingleToken = async (
+	token: Token,
+): Promise<ValidatedToken> => {
 	try {
 		const onChainData = await getTokenFromChain(token.address, token.chainId);
 

@@ -5,7 +5,9 @@ export interface Token {
 	name: string;
 	symbol: string;
 	decimals: number;
-	logoURI?: string;
+	logoUrl?: string; // Preferred over logoURI
+	logoURI?: string; // Kept for backwards compatibility/parsing
+	isValidated?: boolean;
 }
 
 export type RawToken = Omit<Token, "id">;
