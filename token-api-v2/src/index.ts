@@ -23,6 +23,8 @@ app.get("/", (c) => {
 		endpoints: {
 			tokens: "/tokens",
 			tokensByChain: "/tokens?chainIds=8453,1135",
+			token: "/token?address=0x...&chainId=8453",
+			validate: "POST /validate",
 		},
 	});
 });
