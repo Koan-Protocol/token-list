@@ -9,7 +9,7 @@
 	// "vars": {
 	//   "MY_VAR": "my-variable"
 	// },
-	"triggers": { "crons": ["* * * * *"] }
+	"triggers": { "crons": ["*/5 * * * *"] }
 	// "kv_namespaces": [
 	//   {
 	//     "binding": "MY_KV_NAMESPACE",

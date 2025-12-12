@@ -189,7 +189,8 @@ export const COUNTER_ABI = [
 	},
 ] as const;
 
-export const COUNTER_CONTRACT_ADDRESS: Address = "0xYourCounterContractAddress";
+export const COUNTER_CONTRACT_ADDRESS: Address =
+	"0xCd6A75D66B0beE527817b0A1be339723CD6392D9";
 
 export const BASE_RPC_URL =
 	"https://lb.drpc.live/base/Asv5pVcZpEZuuMS7ScKuU2eUvqwk0b0R75_VQkTKRtpJ";

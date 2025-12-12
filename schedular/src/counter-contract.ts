@@ -15,6 +15,16 @@ import {
 export async function runCheckpoint(
 	privateKey: `0x${string}`,
 ): Promise<{ txHash: `0x${string}`; offset: bigint }> {
+	// Defensive runtime validation to avoid crashes inside viem
+	// if (
+	// 	!privateKey ||
+	// 	typeof privateKey !== "string" ||
+	// 	!/^0x[0-9a-fA-F]{64}$/.test(privateKey)
+	// ) {
+	// 	throw new TypeError(
+	// 		"Invalid PRIVATE KEY provided to runCheckpoint. Expected 0x-prefixed 64-hex string.",
+	// 	);
+	// }
 	// Create client once (required for actions)
 	const walletClient = createWalletClient({
 		account: privateKeyToAccount(privateKey),
