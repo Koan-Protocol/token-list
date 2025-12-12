@@ -2,6 +2,8 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import routes from "./routes";
 
+export { TokenValidationSchedulers } from "./durable-objects/token-validators";
+
 const app = new Hono<{ Bindings: Env }>();
 
 app.use(

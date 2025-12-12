@@ -13,18 +13,34 @@ tokensRoute.get("/", async (c) => {
 			.filter((id) => !isNaN(id));
 
 		const tokens = await getTokensByChainIds(c.env, chainIds);
+		// Map logoURI to logoUri for each token in the response
+		const mappedTokens = tokens.map((token) => {
+			if (token.logoURI) {
+				const { logoURI, ...rest } = token;
+				return { ...rest, logoUri: logoURI };
+			}
+			return token;
+		});
 		return c.json({
 			success: true,
-			count: tokens.length,
-			tokens,
+			count: mappedTokens.length,
+			tokens: mappedTokens,
 		});
 	}
 
 	const tokens = await getTokens(c.env);
+	// Map logoURI to logoUri for each token in the response
+	const mappedTokens = tokens.map((token) => {
+		if (token.logoURI) {
+			const { logoURI, ...rest } = token;
+			return { ...rest, logoUri: logoURI };
+		}
+		return token;
+	});
 	return c.json({
 		success: true,
-		count: tokens.length,
-		tokens,
+		count: mappedTokens.length,
+		tokens: mappedTokens,
 	});
 });
 

@@ -29,9 +29,15 @@ tokenRoute.get("/", async (c) => {
 		);
 	}
 
+	// Map logoUrl to logoUri in the response if present
+	let mappedToken: any = token;
+	if (token.logoUrl) {
+		const { logoUrl, ...rest } = token;
+		mappedToken = { ...rest, logoUri: logoUrl };
+	}
 	return c.json({
 		success: true,
-		token,
+		token: mappedToken,
 	});
 });
 
