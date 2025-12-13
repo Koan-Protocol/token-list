@@ -7,6 +7,7 @@ import {
 	CACHE_KEYS,
 } from "../lib/cache";
 import { createRedisClient } from "../lib/upstash-redis";
+import { filterExcludedTokens } from "../lib/constants";
 import {
 	type TokenProvider,
 	lifiProvider,
@@ -31,8 +32,17 @@ const fetchAndCacheUnvalidated = async (env: Env): Promise<Token[]> => {
 	const allTokens = await fetchFromAllProviders(env);
 	const deduplicated = deduplicateTokens(allTokens);
 
+	// Filter out excluded tokens (native tokens, etc.)
+	const filteredTokens = filterExcludedTokens(deduplicated);
+
+	console.log(
+		`Filtered out ${
+			deduplicated.length - filteredTokens.length
+		} excluded tokens (native tokens, etc.)`,
+	);
+
 	// Add position tracking for validation
-	const tokensWithPosition = deduplicated.map((token, index) => ({
+	const tokensWithPosition = filteredTokens.map((token, index) => ({
 		...token,
 		pst: index,
 	}));
@@ -51,11 +61,11 @@ const fetchAndCacheUnvalidated = async (env: Env): Promise<Token[]> => {
 	]);
 
 	console.log(
-		`Cached ${deduplicated.length} unvalidated tokens with position tracking`,
+		`Cached ${filteredTokens.length} unvalidated tokens with position tracking`,
 	);
 
 	// Return without pst for API response
-	return deduplicated;
+	return filteredTokens;
 };
 
 export const getTokens = async (env: Env): Promise<Token[]> => {

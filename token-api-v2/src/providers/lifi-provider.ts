@@ -22,7 +22,7 @@ export const lifiProvider: TokenProvider = {
 							name: t.name,
 							symbol: t.symbol,
 							decimals: t.decimals,
-							logoURI: t.logoURI,
+							logoUrl: t.logoURI,
 						}),
 					);
 				}

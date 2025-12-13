@@ -5,8 +5,7 @@ export interface Token {
 	name: string;
 	symbol: string;
 	decimals: number;
-	logoUrl?: string; // Preferred over logoURI
-	logoURI?: string; // Kept for backwards compatibility/parsing
+	logoUrl?: string;
 	isValidated?: boolean;
 }
 
