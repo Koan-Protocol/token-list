@@ -58,3 +58,62 @@ export const filterExcludedTokens = <
 		(token) => !shouldExcludeToken(token.address, token.chainId),
 	);
 };
+
+import type { Token } from "../types/token";
+
+export const NATIVE_TOKEN_ADDRESS =
+	"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
+
+// Native token configuration per chain
+export const NATIVE_TOKENS: Record<number, Omit<Token, "id">> = {
+	// Base Mainnet
+	8453: {
+		chainId: 8453,
+		address: NATIVE_TOKEN_ADDRESS,
+		name: "Ether",
+		symbol: "ETH",
+		decimals: 18,
+		logoUrl:
+			"https://raw.githubusercontent.com/Koan-Protocol/token-list/main/token-list/src/logos/native/eth.png",
+	},
+	// Lisk Mainnet
+	1135: {
+		chainId: 1135,
+		address: NATIVE_TOKEN_ADDRESS,
+		name: "Ether",
+		symbol: "ETH",
+		decimals: 18,
+		logoUrl:
+			"https://raw.githubusercontent.com/Koan-Protocol/token-list/main/token-list/src/logos/native/eth.png",
+	},
+	// Base Sepolia
+	84532: {
+		chainId: 84532,
+		address: NATIVE_TOKEN_ADDRESS,
+		name: "Sepolia Ether",
+		symbol: "ETH",
+		decimals: 18,
+		logoUrl:
+			"https://raw.githubusercontent.com/Koan-Protocol/token-list/main/token-list/src/logos/native/eth.png",
+	},
+	// Lisk Sepolia
+	4202: {
+		chainId: 4202,
+		address: NATIVE_TOKEN_ADDRESS,
+		name: "Sepolia Ether",
+		symbol: "ETH",
+		decimals: 18,
+		logoUrl:
+			"https://raw.githubusercontent.com/Koan-Protocol/token-list/main/token-list/src/logos/native/eth.png",
+	},
+};
+
+export const getNativeToken = (chainId: number): Token | null => {
+	const nativeConfig = NATIVE_TOKENS[chainId];
+	if (!nativeConfig) return null;
+
+	return {
+		...nativeConfig,
+		id: `${NATIVE_TOKEN_ADDRESS.toLowerCase()}:${chainId}`,
+	};
+};

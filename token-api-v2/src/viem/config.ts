@@ -1,5 +1,6 @@
 import { type Chain, createPublicClient, http } from "viem";
 import { base, lisk, baseSepolia, liskSepolia } from "viem/chains";
+import { publicActions } from "viem";
 
 export const chainConfigs: Record<number, { chain: Chain; rpcUrl: string }> = {
 	8453: {
@@ -35,5 +36,5 @@ export const createViemPublicClient = (chainId: number) => {
 		chain: config.chain,
 		transport: http(config.rpcUrl),
 		cacheTime: 10_000,
-	});
+	}).extend(publicActions);
 };

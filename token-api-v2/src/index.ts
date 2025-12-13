@@ -29,6 +29,9 @@ app.get("/", (c) => {
 				byChain: "GET /tokens?chainIds=8453,1135",
 				single: "GET /token?address=0x...&chainId=8453",
 			},
+			balance: {
+				get: "GET /balance?account=0x...&chainId=8453",
+			},
 			validation: {
 				start: "POST /validate",
 				status: "GET /validate/status",
@@ -41,6 +44,7 @@ app.get("/", (c) => {
 			"Batch validation with Durable Objects & Alarms",
 			"Two-tier caching (validated & unvalidated)",
 			"On-chain verification via viem",
+			"Token balance fetching with multicall",
 		],
 	});
 });
