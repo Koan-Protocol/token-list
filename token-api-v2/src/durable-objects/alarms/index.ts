@@ -77,7 +77,7 @@ export async function handleAlarm(state: any, env: Env): Promise<void> {
 					name: result.name,
 					symbol: result.symbol,
 					decimals: result.decimals,
-					logoUrl: result.logoUrl || result.logoURI,
+					logoUrl: result.logoUrl,
 					isValidated: result.validated,
 				};
 			}),

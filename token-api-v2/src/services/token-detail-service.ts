@@ -33,6 +33,6 @@ export const getTokenDetails = async (
 		name: onChainData.name,
 		symbol: onChainData.symbol,
 		decimals: onChainData.decimals,
-		logoUrl: cachedToken?.logoURI || "",
+		logoUrl: cachedToken?.logoUrl || "",
 	};
 };

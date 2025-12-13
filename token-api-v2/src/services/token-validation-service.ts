@@ -109,7 +109,7 @@ export const validateAllTokens = async (
 					name: result.name,
 					symbol: result.symbol,
 					decimals: result.decimals,
-					logoURI: result.logoURI,
+					logoUrl: result.logoUrl,
 				});
 			} else {
 				failedTokens.push({
@@ -124,7 +124,7 @@ export const validateAllTokens = async (
 					name: result.name,
 					symbol: result.symbol,
 					decimals: result.decimals,
-					logoURI: result.logoURI,
+					logoUrl: result.logoUrl,
 				});
 			}
 		}
