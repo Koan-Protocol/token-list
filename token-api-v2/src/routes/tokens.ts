@@ -4,15 +4,16 @@ import { getTokens, getTokensByChainIds } from "../services/token-service";
 const tokensRoute = new Hono<{ Bindings: Env }>();
 
 tokensRoute.get("/", async (c) => {
-	const chainIdsParam = c.req.query("chainIds");
+	const chainIdParam = c.req.query("chainId");
 
-	if (chainIdsParam) {
-		const chainIds = chainIdsParam
-			.split(",")
-			.map((id) => parseInt(id.trim(), 10))
-			.filter((id) => !isNaN(id));
+	// console.log({ chainIdParam });
 
-		const tokens = await getTokensByChainIds(c.env, chainIds);
+	if (chainIdParam) {
+		const chainId = Number(chainIdParam);
+
+		const tokens = await getTokensByChainIds(c.env, chainId);
+
+		console.log({ tokens });
 		return c.json({
 			success: true,
 			count: tokens.length,

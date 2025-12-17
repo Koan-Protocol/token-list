@@ -11,7 +11,13 @@
 				"class_name": "TokenValidationSchedulers"
 			}
 		]
-	}
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": ["TokenValidationSchedulers"]
+		}
+	],
 	// "vars": {
 	//   "MY_VAR": "my-variable"
 	// },
@@ -37,8 +43,11 @@
 	// "ai": {
 	//   "binding": "AI"
 	// },
-	// "observability": {
-	//   "enabled": true,
-	//   "head_sampling_rate": 1
-	// }
+	"observability": {
+		"enabled": true,
+		"head_sampling_rate": 1
+	},
+	"dev": {
+		"port": 7000
+	}
 }

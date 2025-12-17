@@ -74,6 +74,9 @@ export const getTokens = async (env: Env): Promise<Token[]> => {
 		env,
 		CACHE_KEYS.VALIDATED_TOKENS,
 	);
+
+	console.log({ validated });
+
 	if (validated?.length) {
 		console.log(`✅ Validated cache hit: ${validated.length} tokens`);
 		return validated;
@@ -82,11 +85,16 @@ export const getTokens = async (env: Env): Promise<Token[]> => {
 	// 2. Check if we need to refresh unvalidated cache
 	const needsRefresh = await shouldRefreshCache(env);
 
+	console.log({ needsRefresh });
+
 	if (!needsRefresh) {
 		const unvalidated = await getFromCache<Token[]>(
 			env,
 			CACHE_KEYS.UNVALIDATED_TOKENS,
 		);
+
+		console.log({ unvalidated });
+		
 		if (unvalidated?.length) {
 			console.log(`📦 Unvalidated cache hit: ${unvalidated.length} tokens`);
 			// Remove pst before returning
@@ -101,9 +109,10 @@ export const getTokens = async (env: Env): Promise<Token[]> => {
 
 export const getTokensByChainIds = async (
 	env: Env,
-	chainIds: number[],
+	chainId: number,
 ): Promise<Token[]> => {
 	const tokens = await getTokens(env);
-	if (!chainIds.length) return tokens;
-	return tokens.filter((t) => chainIds.includes(t.chainId));
+
+	// console.log({ chainId, tokens2: tokens });
+	return tokens.filter((t) => t.chainId === chainId);
 };
