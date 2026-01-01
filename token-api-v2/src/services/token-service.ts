@@ -13,7 +13,7 @@ import {
 	lifiProvider,
 	oneInchProvider,
 	defaultProvider,
-} from "../providers";
+} from "../lib/token-lists-providers";
 
 const providers: TokenProvider[] = [
 	lifiProvider,
@@ -94,7 +94,7 @@ export const getTokens = async (env: Env): Promise<Token[]> => {
 		);
 
 		console.log({ unvalidated });
-		
+
 		if (unvalidated?.length) {
 			console.log(`📦 Unvalidated cache hit: ${unvalidated.length} tokens`);
 			// Remove pst before returning

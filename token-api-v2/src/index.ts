@@ -13,7 +13,9 @@ app.use(
 			"http://localhost:3000",
 			"http://127.0.0.1:3000",
 			"https://koanprotocol.xyz",
+			"https://www.koanprotocol.xyz",
 			"https://koanprotocol.com",
+			"https://www.koanprotocol.com",
 		],
 		credentials: true,
 	}),
@@ -52,3 +54,14 @@ app.get("/", (c) => {
 app.route("/", routes);
 
 export default app;
+
+// 1. AAVE on Base (Chain ID 8453)
+// bash
+// curl "http://localhost:8787/price?chainId=8453&address=0x63706e40d51086a0740924e27f00f074d17f814b"
+// 2. AAVE on Ethereum Mainnet (Chain ID 1)
+// bash
+// curl "http://localhost:8787/price?chainId=1&address=0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9"
+// 3. JUP on Solana (Chain ID "solana")
+// bash
+// curl "http://localhost:8787/price?chainId=solana&address=JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN"
+// Note: Ensure your local worker

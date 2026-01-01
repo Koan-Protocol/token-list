@@ -12,7 +12,7 @@ export const getUserBalances = async (
 	chainId: number,
 ): Promise<TokenBalance[]> => {
 	// Fetch all tokens for the specified chain
-	const tokens = await getTokensByChainIds(env, [chainId]);
+	const tokens = await getTokensByChainIds(env, chainId);
 
 	// Always include native token for the chain
 	const nativeToken = getNativeToken(chainId);
